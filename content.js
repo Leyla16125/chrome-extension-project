@@ -1,30 +1,17 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.action === "getProfileData") {
-    // Profil adını alırıq
-    const profileName = document.querySelector('.text-heading-xlarge')?.innerText || 'Ad tapılmadı';
-
-    // Təcrübə məlumatlarını alırıq (Doğru seçicini istifadə edirik)
-    const experienceElements = document.querySelectorAll('.pv-profile-section--experience ul li');
-    const experienceList = Array.from(experienceElements).map(el => el.innerText.trim());
-
-    // Təhsil məlumatlarını alırıq (Doğru seçicini istifadə edirik)
-    const educationElements = document.querySelectorAll('.pv-profile-section--education ul li');
-    const educationList = Array.from(educationElements).map(el => el.innerText.trim());
-
-    
-    // Profil məlumatlarını toplama
-    const profileData = {
-      name: profileName,
-      experience: experienceList,
-      education: educationList
-    };
-
-    console.log("Alınan Profil Məlumatları:", profileData); // Konsola məlumatları çap edirik
-
-    // Profil məlumatlarını cavab olaraq göndəririk
-    sendResponse(profileData);
-
-    // Asinxron cavab qaytarırıq
-    return true;
-  }
-});
+    if (message.action === "getProfileData") {
+      const profileData = {
+        name: document.querySelector('.text-heading-xlarge')?.innerText || 'Ad tapılmadı',
+        experience: Array.from(document.querySelectorAll('.experience-section li')).map(el => el.innerText.trim()),
+        education: Array.from(document.querySelectorAll('.education-section li')).map(el => el.innerText.trim())
+      };
+  
+// To retrieve information from the profile in the console
+      console.log("Alınan Profil Məlumatları:", profileData);
+  
+      sendResponse(profileData);//asynchrously
+  
+      return true;
+    }
+  });
+  
