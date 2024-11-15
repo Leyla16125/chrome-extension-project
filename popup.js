@@ -2,6 +2,8 @@ const profileSelector = document.getElementById('profile-selector');
 const createProfileButton = document.getElementById('create-profile-button');
 const saveButton = document.getElementById('save-button');
 
+
+
 // load existing profiles into the selector
 function loadProfiles() {
   // gt all profile names from localStorage
@@ -103,5 +105,28 @@ addMappingButton.addEventListener('click', function() {
     localStorage.setItem('field-mappings', JSON.stringify(mappings));
   } else {
     alert("Please enter both form field and select a LinkedIn field.");
+  }
+});
+
+
+//Edited
+const generateCoverLetterButton = document.getElementById('generate-cover-letter');
+const coverLetterOutput = document.getElementById('cover-letter-output');
+
+// Listen for the "Generate Cover Letter" button click
+generateCoverLetterButton.addEventListener('click', () => {
+  // Send a message to content.js to detect job title and company name
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    chrome.scripting.executeScript({
+      target: { tabId: tabs[0].id },
+      files: ["content.js"]
+    });
+  });
+});
+
+// Listen for the generated cover letter from background.js
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === "coverLetterGenerated" && request.coverLetter) {
+    coverLetterOutput.textContent = request.coverLetter;
   }
 });
