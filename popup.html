@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -24,45 +25,25 @@
     <textarea id="summary" placeholder="Write a short personal summary"></textarea>
     <br>
   </div>
-
-
-  <h3>Form Field Mapping</h3>
-<div id="mapping-container">
-  <label for="form-field">Form Field:</label>
-  <input type="text" id="form-field" placeholder="Enter form field name">
-  <br>
-  <label for="linkedin-field">LinkedIn Field:</label>
-  <select id="linkedin-field">
-    <option value="name">Name</option>
-    <option value="email">Email</option>
-    <option value="certificates">Certificates</option>
-    <option value="portfolio">Portfolio</option>
-    <option value="summary">Summary</option>
-  </select>
-  <button id="add-mapping">Add Mapping</button>
-</div>
-<br>
-<div id="mapping-list"></div>
-
-
-  <br>
-  <!-- profile Selector -->
-  <label for="profile-selector">Select Profile:</label>
-  <select id="profile-selector">
-  <option value="">-- Select a Profile --</option>
-  <!-- profiles will be dynamically added here -->
-  </select>
-
-  <br><br>
-<button id="create-profile-button">Create New Profile</button>
-
-<br><br>
-  <!-- customizable Fields Section -->
-  <button id="add-custom-field">Add Custom Field</button>
-  <div id="custom-fields-container"></div>
-
-  <br>
   <button id="save-button">Save Data</button>
+  
+  <div>
+    <label for="profile-select">Select Profile:</label>
+    <select id="profile-select">
+      <option value="">-- Select a profile --</option>
+    </select>
+  </div>
+  
+  <br>
+  <div>
+    <label for="new-profile">New Profile Name:</label>
+    <input type="text" id="new-profile" placeholder="Enter profile name">
+    <button id="save-profile">Save Profile</button>
+  </div>
+  
+  <button id="load-profile">Load Profile</button>
+
+
 
   <script src="popup.js"></script>
 </body>
