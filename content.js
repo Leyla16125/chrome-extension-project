@@ -1,38 +1,30 @@
-chrome.storage.sync.get(['name', 'email', 'certificates', 'portfolio', 'summary'], function(data) {
-    if (data.name) {
-      // Find the relevant form fields and fill them with saved data
-      let nameField = document.querySelector('input[name="name"]');
-      if (nameField) {
-        nameField.value = data.name;
-      }
-    }
-  
-    if (data.email) {
-      let emailField = document.querySelector('input[name="email"]');
-      if (emailField) {
-        emailField.value = data.email;
-      }
-    }
-  
-    if (data.certificates) {
-      let certificatesField = document.querySelector('input[name="certificates"]');
-      if (certificatesField) {
-        certificatesField.value = data.certificates;
-      }
-    }
-  
-    if (data.portfolio) {
-      let portfolioField = document.querySelector('input[name="portfolio"]');
-      if (portfolioField) {
-        portfolioField.value = data.portfolio;
-      }
-    }
-  
-    if (data.summary) {
-      let summaryField = document.querySelector('textarea[name="summary"]');
-      if (summaryField) {
-        summaryField.value = data.summary;
-      }
-    }
-  });
-  
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === "getProfileData") {
+    // Profil adını alırıq
+    const profileName = document.querySelector('.text-heading-xlarge')?.innerText || 'Ad tapılmadı';
+
+    // Təcrübə məlumatlarını alırıq (Doğru seçicini istifadə edirik)
+    const experienceElements = document.querySelectorAll('.pv-profile-section--experience ul li');
+    const experienceList = Array.from(experienceElements).map(el => el.innerText.trim());
+
+    // Təhsil məlumatlarını alırıq (Doğru seçicini istifadə edirik)
+    const educationElements = document.querySelectorAll('.pv-profile-section--education ul li');
+    const educationList = Array.from(educationElements).map(el => el.innerText.trim());
+
+    
+    // Profil məlumatlarını toplama
+    const profileData = {
+      name: profileName,
+      experience: experienceList,
+      education: educationList
+    };
+
+    console.log("Alınan Profil Məlumatları:", profileData); // Konsola məlumatları çap edirik
+
+    // Profil məlumatlarını cavab olaraq göndəririk
+    sendResponse(profileData);
+
+    // Asinxron cavab qaytarırıq
+    return true;
+  }
+});
