@@ -1,12 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>LinkedIn Profile Information</title>
+    <script src="popup.js"></script>
+    <style>
+        body {
+            max-width: 380px;
+            max-height: 420px;
+            font-family: Verdana, Geneva, sans-serif;
+            overflow-y: auto;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .profile-section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        .profile-section label {
+            font-weight: 600;
+            color: #555;
+            display: inline-block;
+            min-width: 100px;
+        }
+
+        #profileBio {
+            margin-top: 10px;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>LinkedIn Data Scraper</h1>
-    <p>Scrapped Data will be shown here.</p>
+    <h3>LinkedIn Profile Information</h3>
+
+    <div class="profile-section">
+        <label>Name:</label> <span id="profileName">N/A</span><br><br>
+        <label>About:</label><span id="profileBio">N/A</span><br><br>
+        <label>Phone:</label> <span id="profilePhone">N/A</span><br><br>
+        <label>Email:</label> <span id="profileEmail">N/A</span><br><br>
+        <label>Job Title:</label> <span id="profileTitle">N/A</span><br><br>
+        <label>Birthday:</label> <span id="profileBirthday">N/A</span><br><br>
+        <label>Location:</label> <span id="profileLocation">N/A</span><br><br>
+        <label>Portfolio:</label> <span id="profileWebsite">N/A</span><br><br>
+    </div>
 </body>
+
 </html>
