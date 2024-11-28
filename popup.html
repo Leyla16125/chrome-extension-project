@@ -28,7 +28,7 @@
         box-sizing: border-box;
       }
       button {
-        background-color:cadetblue;
+        background-color: cadetblue;
         color: #fff;
         padding: 12px;
         border: none;
@@ -41,35 +41,18 @@
       button:hover {
         background-color: #204d8c;
       }
-      h3, h4 {
+      h3 {
         color: cadetblue;
         text-align: center;
-      }
-      #addCustomFields {
-        margin-top: 20px;
-        background: #ffffff;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
       }
     </style>
   </head>
   <body>
     <h3>LinkedIn Profile Manager</h3>
     <div id="profileFields"></div>
-
-    <!-- Section to Add Custom Fields -->
-    <div id="addCustomFields">
-      <h4>Create New Field</h4>
-      <label for="customFieldLabel">Field Name</label>
-      <input type="text" id="customFieldLabel" placeholder="Enter field name">
-      <label for="customFieldValue">Field Content</label>
-      <input type="text" id="customFieldValue" placeholder="Enter field content">
-      <button id="addFieldBtn">Add New Field</button>
-    </div>
-
     <button id="saveDataBtn">Save Profile</button>
     <button id="resetDataBtn">Clear All Data</button>
+    <a href="customFields.html">Custom Fields</a>
     <script src="popup.js"></script>
   </body>
 </html>
