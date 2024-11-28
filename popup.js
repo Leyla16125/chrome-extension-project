@@ -26,7 +26,7 @@ function loadFields() {
 
         const input = document.createElement('input');
         input.type = 'text';
-        input.value = storedData[field.key] || ''; 
+        input.value = storedData[field.key] || '';
         input.dataset.fieldKey = field.key;
 
         fieldDiv.appendChild(label);
@@ -34,24 +34,6 @@ function loadFields() {
         profileFieldsDiv.appendChild(fieldDiv);
     });
 
-    // Render any custom fields saved in localStorage
-    const customFields = storedData.customFields || [];
-    customFields.forEach(field => {
-        const fieldDiv = document.createElement('div');
-        fieldDiv.classList.add('editable');
-
-        const label = document.createElement('label');
-        label.textContent = `${field.label}:`;
-
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.value = field.value || '';
-        input.dataset.fieldKey = field.key;
-
-        fieldDiv.appendChild(label);
-        fieldDiv.appendChild(input);
-        profileFieldsDiv.appendChild(fieldDiv);
-    });
 }
 
 // Function to save profile data into localStorage
@@ -66,32 +48,6 @@ function saveData() {
 
     localStorage.setItem('profileData', JSON.stringify(storedData));
     alert('Profile data saved successfully!');
-}
-
-// Function to add a custom field to the profile
-function addCustomField() {
-    const labelInput = document.getElementById('customFieldLabel');
-    const valueInput = document.getElementById('customFieldValue');
-
-    const fieldLabel = labelInput.value.trim();
-    const fieldValue = valueInput.value.trim();
-
-    if (fieldLabel && fieldValue) {
-        const storedData = JSON.parse(localStorage.getItem('profileData')) || {};
-        const customFields = storedData.customFields || [];
-
-        customFields.push({ label: fieldLabel, value: fieldValue });
-
-        storedData.customFields = customFields;
-        localStorage.setItem('profileData', JSON.stringify(storedData));
-
-        loadFields();
-
-        labelInput.value = '';
-        valueInput.value = '';
-    } else {
-        alert('Please provide both a label and a value for the custom field.');
-    }
 }
 
 // Function to reset all profile data and trigger re-fetching
@@ -117,10 +73,11 @@ chrome.runtime.onMessage.addListener(function (message) {
     }
 });
 
+
+
 // Set up event listeners for buttons when the popup loads
 window.addEventListener('load', function () {
     document.getElementById('saveDataBtn').addEventListener('click', saveData);
-    document.getElementById('addFieldBtn').addEventListener('click', addCustomField);
     document.getElementById('resetDataBtn').addEventListener('click', resetData);
 
     loadFields();
