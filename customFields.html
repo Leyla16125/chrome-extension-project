@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Custom Fields</title>
+    <style>
+      body {
+        font-family: "Verdana", sans-serif;
+        padding: 15px;
+        width: 350px;
+        margin: auto;
+        background-color: #f4f4f4;
+      }
+      input {
+        width: calc(100% - 20px);
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+      button {
+        background-color: cadetblue;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        margin: 5px 5px 5px 0;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #204d8c;
+      }
+      .custom-field {
+        margin-bottom: 15px;
+        background: #ffffff;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      h4 {
+        color: cadetblue;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h4>Create New Field</h4>
+    <label for="customFieldLabel">Field Name</label>
+    <input type="text" id="customFieldLabel" placeholder="Enter field name">
+    <label for="customFieldValue">Field Content</label>
+    <input type="text" id="customFieldValue" placeholder="Enter field content">
+    <button id="addFieldBtn">Add New Field</button>
+
+    <h4>Custom Fields</h4>
+    <div id="customFieldsContainer"></div>
+
+    <script src="customFields.js"></script>
+  </body>
+</html>
