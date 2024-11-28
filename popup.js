@@ -57,10 +57,6 @@ function resetData() {
     const profileFieldsDiv = document.getElementById('profileFields');
     profileFieldsDiv.innerHTML = '';
 
-    const customFieldsDiv = document.getElementById('addCustomFields');
-    customFieldsDiv.querySelector('#customFieldLabel').value = '';
-    customFieldsDiv.querySelector('#customFieldValue').value = '';
-
     chrome.tabs.executeScript(null, { file: 'content.js' });
     alert('Profile data has been reset! Please wait for new data to load.');
 }
