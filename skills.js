@@ -13,7 +13,7 @@ function getSkills() {
   }
   
   function resetSkillsData() {
-    chrome.tabs.executeScript(null, { file: 'payload_skills.js' }, () => {
+    chrome.tabs.executeScript(null, { file: 'get_content_skills.js' }, () => {
       alert('Skills data has been reset and reloaded!');
       getSkills();
     });
