@@ -5,20 +5,27 @@
 	"version": "1.0",
 	"author": "@leyla",
 	"permissions": [
+		"activeTab",
+		"scripting",
 		"tabs",
 		"storage",
-		"http://*/",
+		"http://*/", 
 		"https://*/"
 	],
 	"content_scripts": [
 		{
 			"matches": ["https://www.linkedin.com/*"],
-			"js": ["content.js", "get_content_skills.js"]
+			"js": ["content.js",
+			"get_content_skills.js",
+			"get_content_cert.js",
+			"get_content_edu.js",
+			"get_content_experience.js",
+			"get_content_lang.js"]
 		}
 	],
 	"background": {
-		"scripts": ["background.js"],
-		"persistent": false
+		"scripts": ["dist/background.bundle.js"],
+		"persistent": true
 	},
 	"browser_action": {
 		"default_icon": "icon16.png",
@@ -29,7 +36,10 @@
 		"skills.js",
 		"popup.js",
 		"popup.html",
-		"customFields.html",
-		"customFields.js"
+		"customFields.js",
+		"cert.js",
+		"edu.js",
+		"experience.js",
+		"lang.js"
 	]
 }

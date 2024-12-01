@@ -1,0 +1,42 @@
+body {
+    font-family: "Verdana", sans-serif;
+    padding: 15px;
+    width: 350px;
+    margin: auto;
+    background-color: #f4f4f4;
+  }
+  .editable {
+    margin-bottom: 15px;
+  }
+  label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  button {
+    background-color: cadetblue;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #204d8c;
+  }
+  h3, h4 {
+    color: cadetblue;
+    text-align: center;
+  }
