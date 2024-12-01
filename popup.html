@@ -2,59 +2,79 @@
 <html>
   <head>
     <title>LinkedIn Profile Manager</title>
-    <style>
-      body {
-        font-family: "Verdana", sans-serif;
-        padding: 15px;
-        width: 350px;
-        margin: auto;
-        background-color: #f4f4f4;
-      }
-      .editable {
-        margin-bottom: 15px;
-      }
-      label {
-        font-weight: 600;
-        display: block;
-        margin-bottom: 5px;
-        color: #333;
-      }
-      input {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-      }
-      button {
-        background-color: cadetblue;
-        color: #fff;
-        padding: 12px;
-        border: none;
-        border-radius: 5px;
-        width: 100%;
-        font-size: 14px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-      button:hover {
-        background-color: #204d8c;
-      }
-      h3 {
-        color: cadetblue;
-        text-align: center;
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <h3>LinkedIn Profile Manager</h3>
-    <div id="profileFields"></div>
-    <button id="saveDataBtn">Save Profile</button>
-    <button id="resetDataBtn">Clear All Data</button>
-    <a href="customFields.html">Custom Fields</a>
-    <a href="skills.html" id="skillsPageLink">Manage Skills</a>
+    <h1>LinkedIn Profile Manager</h1>
 
+    <h3>Manage Skills</h3>
+    <textarea id="skillsTextarea" rows="7" style="width: 340px;" placeholder="Skills will be loaded here..."></textarea>
+    <button id="resetSkills">Refresh Skills</button>
+    <button id="saveSkills">Save Skills</button>
+
+    <br>
+    <hr>
+
+    <h3>Manage Certification</h3>
+    <textarea id="certificatesTextarea" rows="7" style="width: 340px;" placeholder="Certificates will be loaded here..."></textarea>
+    <button id="refreshCertificatesBtn">Refresh Certificates</button>
+    <button id="saveCertificatesBtn">Save Certificates</button>
+
+    <br>
+    <hr>
+
+    <h3>Manage Languages</h3>
+    <textarea id="languagesTextarea" rows="7" style="width: 340px;" placeholder="Languages will be loaded here..."></textarea>
+    <button id="refreshLanguagesBtn">Refresh Languages</button>
+    <button id="saveLanguagesBtn">Save Languages</button>
+
+    <br>
+    <hr>
+
+    <h3>Manage Experiences</h3>
+    <textarea id="experiencesTextarea" rows="7" style="width: 340px;" placeholder="Experiences will be loaded here..."></textarea>
+    <button id="refreshExperiencesBtn">Refresh Experiences</button>
+    <button id="saveExperiencesBtn">Save Experiences</button>
+
+    <br>
+    <hr>
+
+    <h3>Manage Education</h3>
+    <textarea id="educationTextarea" rows="7" style="width: 340px;" placeholder="Education will be loaded here..."></textarea>
+    <button id="refreshEducationBtn">Refresh Education</button>
+    <button id="saveEducationBtn">Save Education</button>
+
+    <br>
+    <hr>
+
+    <h3>Manage Personal Data</h3>
+    <div id="profileFields"></div>
+    <button id="resetDataBtn">Refresh Profile Data</button>
+    <button id="saveDataBtn">Save Profile</button>
+
+    <br>
+    <hr>
+
+    <h4>Create New Field</h4>
+    <label for="customFieldLabel">Field Name</label>
+    <input type="text" id="customFieldLabel" placeholder="Enter field name">
+    <label for="customFieldValue">Field Content</label>
+    <input type="text" id="customFieldValue" placeholder="Enter field content">
+    <button id="addFieldBtn">Add New Field</button>
+    <br>
+    <h4>Custom Fields</h4>
+    <div id="customFieldsContainer"></div>
+
+    <br>
+    <hr>
+
+    <script src="experience.js"></script>
+    <script src="skills.js"></script>
+    <script src="customFields.js"></script>
     <script src="popup.js"></script>
+    <script src="cert.js"></script>
+    <script src="lang.js"></script>
+    <script src="edu.js"></script>
+
   </body>
 </html>
