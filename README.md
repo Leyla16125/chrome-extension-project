@@ -77,10 +77,10 @@ This project is a Chrome extension designed to automate form filling for job app
 6. Once all the required fields are filled or edited, you can submit the form automatically or copy the data to use elsewhere.
 
 ## Valid Endpoints
-- [https://www.linkedin.com/in//details/skills](https://www.linkedin.com/in//details/skills)
-- [https://www.linkedin.com/in//details/experience](https://www.linkedin.com/in//details/experience)
-- [https://www.linkedin.com/in//overlay/contact-info](https://www.linkedin.com/in//overlay/contact-info)
-- [https://www.linkedin.com/in//details/education](https://www.linkedin.com/in//details/education)
-- [https://www.linkedin.com/in//details/certifications](https://www.linkedin.com/in//details/certifications)
-- [https://www.linkedin.com/in//details/languages](https://www.linkedin.com/in//details/languages)
+- [https://www.linkedin.com/in/<username>/details/skills](https://www.linkedin.com/in/<username>/details/skills)
+- [https://www.linkedin.com/in/<username>/details/experience](https://www.linkedin.com/in/<username>/details/experience)
+- [https://www.linkedin.com/in/<username>/overlay/contact-info](https://www.linkedin.com/in/<username>/overlay/contact-info)
+- [https://www.linkedin.com/in/<username>/details/education](https://www.linkedin.com/in/<username>/details/education)
+- [https://www.linkedin.com/in/<username>/details/certifications](https://www.linkedin.com/in/<username>/details/certifications)
+- [https://www.linkedin.com/in/<username>/details/languages](https://www.linkedin.com/in/<username>/details/languages)
 
