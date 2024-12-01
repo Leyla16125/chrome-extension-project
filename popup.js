@@ -1,4 +1,3 @@
-// Function to load saved profile data from localStorage and render editable fields
 function loadFields() {
     const profileFieldsDiv = document.getElementById('profileFields');
     profileFieldsDiv.innerHTML = '';
@@ -16,7 +15,6 @@ function loadFields() {
         { key: 'birthday', label: 'Birthday' },
     ];
 
-    // Dynamically create input fields for default attributes
     defaultFields.forEach(field => {
         const fieldDiv = document.createElement('div');
         fieldDiv.classList.add('editable');
@@ -36,11 +34,53 @@ function loadFields() {
 
 }
 
-// Function to save profile data into localStorage
+
+document.getElementById('generateBtn').addEventListener('click', () => {
+    const htmlInput = document.getElementById('htmlInput').value;
+  
+    if (!htmlInput.trim()) {
+      document.getElementById('coverLetterOutput').value = 'Please provide the HTML content to generate the cover letter.';
+      return;
+    }
+  
+    chrome.runtime.sendMessage(
+      { type: 'generateCoverLetter', htmlStructure: htmlInput },
+      (response) => {
+        const outputField = document.getElementById('coverLetterOutput');
+        if (response.status === 'success') {
+          // Display the generated cover letter
+          outputField.value = response.coverLetter;
+        } else {
+          // Display error messages
+          outputField.value = `Error: ${response.message}`;
+        }
+      }
+    );
+  });
+
+  
+  
+document.addEventListener('DOMContentLoaded', () => {
+    const htmlInput = document.getElementById('htmlInput');
+  
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        const activeTab = tabs[0];
+  
+        chrome.tabs.sendMessage(activeTab.id, { type: 'fetchPageContent' }, (response) => {
+            if (response && response.status === 'success') {
+                // Set the content in the textarea
+                htmlInput.value = response.content;
+            } else {
+                htmlInput.value = 'Failed to fetch page content.';
+            }
+        });
+    });
+  });
+
+
 function saveData() {
     const storedData = {};
 
-    // Iterate over all input fields and collect their data
     const inputs = document.querySelectorAll('input');
     inputs.forEach(input => {
         storedData[input.dataset.fieldKey] = input.value.trim();
@@ -50,7 +90,6 @@ function saveData() {
     alert('Profile data saved successfully!');
 }
 
-// Function to reset all profile data and trigger re-fetching
 function resetData() {
     localStorage.removeItem('profileData');
 
@@ -61,7 +100,6 @@ function resetData() {
     alert('Profile data has been reset! Please wait for new data to load.');
 }
 
-// Listen for messages from the content script to update localStorage
 chrome.runtime.onMessage.addListener(function (message) {
     if (message.type === 'profileData') {
         localStorage.setItem('profileData', JSON.stringify(message.data));
@@ -71,10 +109,76 @@ chrome.runtime.onMessage.addListener(function (message) {
 
 
 
+function exportData() {
+    chrome.runtime.sendMessage({ type: 'getProfileData' }, (response) => {
+      const data = response.data || {};
+      const jsonString = JSON.stringify(data, null, 2);
+      const blob = new Blob([jsonString], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'profile_data.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+  }
+  
+  function importData() {
+    const fileInput = document.getElementById('importDataFile');
+    fileInput.click();
+  
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+  
+      reader.onload = () => {
+        try {
+          const importedData = JSON.parse(reader.result);
+          chrome.runtime.sendMessage({ type: 'profileData', data: importedData }, (response) => {
+            if (response && response.status === 'success') {
+              alert('Data imported successfully!');
+              loadFields();
+            } else {
+              alert('Failed to save imported data.');
+            }
+          });
+        } catch (e) {
+          alert('Invalid file format.');
+        }
+      };
+  
+      reader.readAsText(file);
+    });
+  }
+  
+  
+  function sendDataViaEmail() {
+    chrome.runtime.sendMessage({ type: 'getProfileData' }, (response) => {
+      const data = response.data || {};
+  
+      const emailBody = encodeURIComponent("Here is the exported profile data:\n" + JSON.stringify(data, null, 2));
+  
+      const mailtoLink = `mailto:?subject=Exported Profile Data&body=${emailBody}`;
+  
+      const mailtoWindow = window.open(mailtoLink, '_blank');
+  
+      if (!mailtoWindow) {
+        alert("Unable to open email client. Please check your browser settings.");
+      }
+    });
+  }
+  
+
+
+
 // Set up event listeners for buttons when the popup loads
 window.addEventListener('load', function () {
     document.getElementById('saveDataBtn').addEventListener('click', saveData);
     document.getElementById('resetDataBtn').addEventListener('click', resetData);
+
+    document.getElementById('exportDataBtn').addEventListener('click', exportData);
+    document.getElementById('importDataBtn').addEventListener('click', importData);
+    document.getElementById('sendEmailButton').addEventListener('click', sendDataViaEmail);
 
     loadFields();
 });
