@@ -55,3 +55,33 @@ This project is a Chrome extension designed to automate form filling for job app
    ```bash
    git clone https://github.com/your-repo-name.git
    cd WebMobileProject
+
+
+
+## 📚 How to Use:
+
+Open the Extension:
+
+1. Click on the extension icon in the Chrome toolbar to access the popup.
+Fetch Data:
+
+2 Visit a relevant web page (e.g., LinkedIn or job boards).
+3. The extension will automatically extract available user data.
+Customize Fields:
+
+4. Add custom fields or edit existing ones via the popup interface.
+Generate Cover Letter:
+
+5. Use the AI integration to create a personalized cover letter based on the extracted job description.
+Final Output:
+
+6. Once all the required fields are filled or edited, you can submit the form automatically or copy the data to use elsewhere.
+
+
+Valid endpoints:
+https://www.linkedin.com/in/<username>/details/skills
+https://www.linkedin.com/in/<username>/details/experience
+https://www.linkedin.com/in/<username>/overlay/contact-info
+https://www.linkedin.com/in/<username>/details/education
+https://www.linkedin.com/in/<username>/details/certifications
+https://www.linkedin.com/in/<username>/details/languages
