@@ -68,6 +68,27 @@
     <br>
     <hr>
 
+    <h1>Cover Letter Generator</h1>
+    <textarea id="htmlInput" placeholder="Paste the HTML content of the job listing here..." style="display: none;"></textarea>
+    <br>
+    <button id="generateBtn">Generate Cover Letter</button>
+    <textarea id="coverLetterOutput" rows="7" style="width: 340px;" placeholder="Your cover letter will appear here..." readonly></textarea>
+    <br>
+
+    <br>
+    <hr>
+
+    <div id="dataTransferSection">
+      <h4>Data Transfer</h4>
+      <button id="exportDataBtn">Export Data</button>
+      <input type="file" id="importDataFile" style="display: none;">
+      <button id="importDataBtn">Import Data</button>
+      <button id="sendEmailButton">Send Profile Data via Email</button>
+    </div>
+
+    <br>
+    <hr>
+
     <script src="experience.js"></script>
     <script src="skills.js"></script>
     <script src="customFields.js"></script>
@@ -75,6 +96,5 @@
     <script src="cert.js"></script>
     <script src="lang.js"></script>
     <script src="edu.js"></script>
-
   </body>
 </html>
