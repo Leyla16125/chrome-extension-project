@@ -14,13 +14,14 @@
 	],
 	"content_scripts": [
 		{
-			"matches": ["https://www.linkedin.com/*"],
+			"matches": ["<all_urls>"],
 			"js": ["content.js",
 			"get_content_skills.js",
 			"get_content_cert.js",
 			"get_content_edu.js",
 			"get_content_experience.js",
-			"get_content_lang.js"]
+			"get_content_lang.js",
+			"payload_body.js"]
 		}
 	],
 	"background": {
@@ -40,6 +41,7 @@
 		"cert.js",
 		"edu.js",
 		"experience.js",
-		"lang.js"
+		"lang.js",
+		"generate.js"
 	]
 }
